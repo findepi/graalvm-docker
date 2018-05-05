@@ -19,3 +19,8 @@ openjdk version "1.8.0_161"
 OpenJDK Runtime Environment (build 1.8.0_161-12)
 GraalVM 1.0.0-rc1 (build 25.71-b01-internal-jvmci-0.42, mixed mode)
 ```
+
+## License
+
+- code in this repository -- see [LICENSE](LICENSE)
+- pre-built container -- see https://github.com/oracle/graal#license

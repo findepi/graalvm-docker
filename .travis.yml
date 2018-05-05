@@ -4,6 +4,11 @@ sudo: required
 services:
   - docker
 
+env:
+  global:
+    - DOCKER_USERNAME=findepi
+    - IMAGE_NAME=findepi/graalvm
+
 script:
   - ./bin/build.sh
   - docker image ls

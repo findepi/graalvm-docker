@@ -13,7 +13,7 @@ script:
   - ./bin/build.sh
   - docker image ls
   - docker run --rm local-graalvm:latest java -version 2>&1 | grep GraalVM
-  # TODO test polyglot
+  - docker run -i --rm local-graalvm:polyglot graalpython /dev/stdin <<<"print(2**42)" | grep -xF 4398046511104
 
 deploy:
   provider: script

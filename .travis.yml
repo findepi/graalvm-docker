@@ -5,5 +5,13 @@ services:
   - docker
 
 script:
-  - docker build -t local-test-image .
-  - docker run --rm local-test-image java -version 2>&1 | grep GraalVM
+  - ./bin/build.sh
+  - docker image ls
+  - docker run --rm local-graalvm:latest java -version 2>&1 | grep GraalVM
+  # TODO test polyglot
+
+deploy:
+  provider: script
+  script: ./bin/deploy.sh
+  on:
+    branch: master

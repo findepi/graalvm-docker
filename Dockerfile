@@ -1,7 +1,7 @@
 FROM debian:stable-slim
 LABEL maintainer="Piotr Findeisen <piotr.findeisen@gmail.com>"
 
-ARG GRAAL_VERSION=1.0.0-rc1
+ARG GRAAL_VERSION
 
 RUN set -xeu && \
     export DEBIAN_FRONTEND=noninteractive && \

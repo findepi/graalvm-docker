@@ -9,7 +9,7 @@ docker pull "${IMAGE_NAME}:${GRAAL_VERSION}" || true
 docker pull "${IMAGE_NAME}:${GRAAL_VERSION}-polyglot" || true
 
 docker build \
-    --pull \
+    --pull `#base is public, make sure to use the latest greatest` \
     --file Dockerfile \
     --build-arg "GRAAL_VERSION=${GRAAL_VERSION}" \
     --cache-from "${IMAGE_NAME}:${GRAAL_VERSION}" \
@@ -19,7 +19,6 @@ docker build \
     .
 
 docker build \
-    --pull \
     --file Dockerfile.polyglot \
     --build-arg "GRAAL_VERSION=${GRAAL_VERSION}" \
     --cache-from "${IMAGE_NAME}:${GRAAL_VERSION}-polyglot" \

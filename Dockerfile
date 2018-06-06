@@ -29,3 +29,5 @@ RUN set -xeu && \
 # This applies to all container processes. However, `bash -l` will source `/etc/profile` and set $PATH on its own. For this reason, we
 # *also* set $PATH in /etc/profile.d/*
 ENV PATH=/graalvm/bin:$PATH
+
+# vim:set tw=140:

@@ -8,3 +8,4 @@ RUN set -xeu && \
     gu install -c org.graalvm.R && \
     echo OK
 
+# vim:set ft=dockerfile:

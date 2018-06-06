@@ -1,3 +1,3 @@
 #!bash
 
-GRAAL_VERSION=1.0.0-rc1
+GRAAL_VERSION="1.0.0-rc2"

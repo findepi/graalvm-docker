@@ -9,6 +9,7 @@ script:
   - ./bin/build.sh
   - docker image ls
   - ./bin/test-base.sh
+  - ./bin/test-native.sh
   - ./bin/test-polyglot.sh
 
 deploy:

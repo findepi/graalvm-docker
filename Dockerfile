@@ -9,8 +9,6 @@ RUN set -xeu && \
     apt-get install -y \
         ca-certificates `# stays, not having this is just not useful` \
         curl \
-        gcc `# for graal's native-image` \
-        libz-dev `# for graal's native-image` \
         && \
     curl -fsSL "https://github.com/oracle/graal/releases/download/vm-${GRAAL_VERSION}/graalvm-ce-${GRAAL_VERSION}-linux-amd64.tar.gz" \
         -o /tmp/graalvm.tar.gz && \

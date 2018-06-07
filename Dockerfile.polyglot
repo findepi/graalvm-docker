@@ -1,5 +1,5 @@
 ARG GRAAL_VERSION
-FROM findepi/graalvm:${GRAAL_VERSION}
+FROM findepi/graalvm:${GRAAL_VERSION}-native
 LABEL maintainer="Piotr Findeisen <piotr.findeisen@gmail.com>"
 
 RUN set -xeu && \

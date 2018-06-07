@@ -2,9 +2,6 @@
 
 set -veuo pipefail
 
-cd "$(dirname "$0")/.."
-source ./settings.sh
-
 docker pull "${IMAGE_NAME}:${GRAAL_VERSION}" || true
 docker pull "${IMAGE_NAME}:${GRAAL_VERSION}-polyglot" || true
 

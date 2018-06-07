@@ -4,15 +4,12 @@ sudo: required
 services:
   - docker
 
-env:
-  global:
-    - IMAGE_NAME=findepi/graalvm
-
 script:
+  - . ./settings.sh
   - ./bin/build.sh
   - docker image ls
-  - docker run --rm "${IMAGE_NAME}:latest" java -version 2>&1 | grep GraalVM
-  - docker run -i --rm "${IMAGE_NAME}:polyglot" graalpython /dev/stdin <<<"print(2**42)" | grep -xF 4398046511104
+  - ./bin/test-base.sh
+  - ./bin/test-polyglot.sh
 
 deploy:
   provider: script

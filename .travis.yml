@@ -6,7 +6,6 @@ services:
 
 env:
   global:
-    - DOCKER_USERNAME=findepi
     - IMAGE_NAME=findepi/graalvm
 
 script:

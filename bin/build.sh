@@ -15,7 +15,6 @@ docker build \
     --cache-from "${IMAGE_NAME}:${GRAAL_VERSION}" \
     --tag "${IMAGE_NAME}:${GRAAL_VERSION}" \
     --tag "${IMAGE_NAME}:latest" \
-    --tag "local-graalvm:latest" \
     .
 
 docker build \
@@ -24,5 +23,4 @@ docker build \
     --cache-from "${IMAGE_NAME}:${GRAAL_VERSION}-polyglot" \
     --tag "${IMAGE_NAME}:${GRAAL_VERSION}-polyglot" \
     --tag "${IMAGE_NAME}:polyglot" \
-    --tag "local-graalvm:polyglot" \
     .

@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
-set -veuo pipefail
+set -xeuo pipefail
 
+set +x -v
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+set +v -x
 
 docker push "${IMAGE_NAME}:latest"
 docker push "${IMAGE_NAME}:native"

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -veuo pipefail
+set -xeuo pipefail
 
 docker pull "${IMAGE_NAME}:${GRAAL_VERSION}" || true
 docker pull "${IMAGE_NAME}:${GRAAL_VERSION}-native" || true

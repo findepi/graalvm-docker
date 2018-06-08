@@ -6,7 +6,7 @@ ARG GRAAL_VERSION
 RUN set -xeu && \
     export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && \
-    apt-get install -y \
+    apt-get install -y --no-install-recommends \
         ca-certificates `# stays, not having this is just not useful` \
         curl \
         && \

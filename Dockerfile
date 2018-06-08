@@ -19,7 +19,7 @@ RUN set -xeu && \
         curl \
         && \
     apt-get autoremove -y && \
-    apt-get clean && rm -rf "/var/lib/apt/lists/*" && \
+    apt-get clean && rm -r "/var/lib/apt/lists"/* && \
     echo 'PATH="/graalvm/bin:$PATH"' | install --mode 0644 /dev/stdin /etc/profile.d/graal-on-path.sh && \
     echo OK
 

@@ -13,6 +13,7 @@ RUN set -xeu && \
     mkdir /graalvm && \
     curl -fsSL "https://github.com/oracle/graal/releases/download/vm-${GRAAL_VERSION}/graalvm-ce-${GRAAL_VERSION}-linux-amd64.tar.gz" \
         | tar -zxC /graalvm --strip-components 1 && \
+    find /graalvm -name "*src.zip"  -printf "Deleting %p\n" -exec rm {} + && \
     echo Cleaning up... && \
     apt-get remove -y \
         curl \

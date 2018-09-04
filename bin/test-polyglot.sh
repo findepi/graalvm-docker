@@ -2,4 +2,6 @@
 
 set -xeuo pipefail
 
-docker run -i --rm "${IMAGE_NAME}:polyglot" graalpython /dev/stdin <<<"print(2**42)" | grep -xF 4398046511104
+docker run -i --rm "${IMAGE_NAME}:polyglot" graalpython /dev/stdin <<<"print(2**42)" \
+    | tee /dev/stderr \
+    | grep -xF 4398046511104

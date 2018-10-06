@@ -10,7 +10,7 @@ of course, this one comes with Graal VM.
 
 ## Usage
 
-Since GraalVM's binaries are on the `$PATH`, you can invoke them. Or build a
+Since GraalVM's binaries are on the `$PATH`, you can invoke them easily. Or build a
 derived image based on this.
 
 ```

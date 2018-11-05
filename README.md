@@ -15,9 +15,9 @@ derived image based on this.
 
 ```
 $ docker run findepi/graalvm java -version
-openjdk version "1.8.0_172"
-OpenJDK Runtime Environment (build 1.8.0_172-20180625212755.graaluser.jdk8u-src-tar-g-b11)
-GraalVM 1.0.0-rc8 (build 25.71-b01-internal-jvmci-0.48, mixed mode)
+openjdk version "1.8.0_192"
+OpenJDK Runtime Environment (build 1.8.0_192-20181024121959.buildslave.jdk8u-src-tar--b12)
+GraalVM 1.0.0-rc9 (build 25.192-b12-jvmci-0.49, mixed mode)
 ```
 
 … and for the polyglot image:

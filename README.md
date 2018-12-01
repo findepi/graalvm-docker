@@ -23,7 +23,7 @@ GraalVM 1.0.0-rc9 (build 25.192-b12-jvmci-0.49, mixed mode)
 … and for the polyglot image:
 
 ```
-$ docker run -i findepi/graalvm:polyglot bash -c 'graalpython /dev/stdin <<<"print([42, 2**42])"'
+$ docker run -i findepi/graalvm:polyglot graalpython /dev/stdin <<<"print([42, 2**42])"
 Please note: This Python implementation is in the very early stages, and can run little more than basic benchmarks at this point.
 [42, 4398046511104]
 ```

@@ -14,7 +14,7 @@ Since GraalVM's binaries are on the `$PATH`, you can invoke them easily. Or buil
 derived image based on this.
 
 ```
-$ docker run findepi/graalvm java -version
+$ docker run --rm findepi/graalvm java -version
 openjdk version "1.8.0_192"
 OpenJDK Runtime Environment (build 1.8.0_192-20181024121959.buildslave.jdk8u-src-tar--b12)
 GraalVM 1.0.0-rc9 (build 25.192-b12-jvmci-0.49, mixed mode)
@@ -23,7 +23,7 @@ GraalVM 1.0.0-rc9 (build 25.192-b12-jvmci-0.49, mixed mode)
 … and for the polyglot image:
 
 ```
-$ docker run -i findepi/graalvm:polyglot graalpython /dev/stdin <<<"print([42, 2**42])"
+$ docker run -i --rm findepi/graalvm:polyglot graalpython /dev/stdin <<<"print([42, 2**42])"
 Please note: This Python implementation is in the very early stages, and can run little more than basic benchmarks at this point.
 [42, 4398046511104]
 ```

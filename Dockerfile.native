@@ -6,8 +6,10 @@ RUN set -xeu && \
     export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && \
     apt-get install -y \
+        clang \
         gcc \
         libz-dev \
+        llvm \
         && \
     gu install native-image && \
     # Cleanup

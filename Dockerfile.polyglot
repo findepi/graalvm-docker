@@ -3,8 +3,14 @@ FROM findepi/graalvm:${GRAAL_VERSION}-native
 LABEL maintainer="Piotr Findeisen <piotr.findeisen@gmail.com>"
 
 RUN set -xeu && \
+    # Python
     gu install -c org.graalvm.python && \
+    # TODO /graalvm/bin/gu rebuild-images python && \
+    # Ruby
     gu install -c org.graalvm.ruby && \
+    /graalvm/jre/languages/ruby/lib/truffle/post_install_hook.sh && \
+    # TODO /graalvm/bin/gu rebuild-images ruby && \
+    # R
     gu install -c org.graalvm.R && \
     echo OK
 

@@ -4,6 +4,11 @@ sudo: required
 services:
   - docker
 
+matrix:
+  include:
+    - env: JDK_VERSION=java8 DEFAULT_IMAGE=true
+    - env: JDK_VERSION=java11 DEFAULT_IMAGE=false
+
 script:
   - . ./settings.sh
   - ./bin/build.sh

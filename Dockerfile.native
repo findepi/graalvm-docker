@@ -8,6 +8,7 @@ RUN set -xeu && \
     apt-get update && \
     apt-get install -y \
         gcc \
+        g++ \
         libz-dev \
         && \
     gu install native-image && \

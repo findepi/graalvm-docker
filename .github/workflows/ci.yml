@@ -1,0 +1,45 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        jdk_version: [ java8 ]
+        default_image: [ true ]
+        include:
+          - jdk_version: java11
+            default_image: false
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build
+        run: |
+          set -xeuo pipefail
+          . ./settings.sh
+          ./bin/build.sh
+          docker image ls
+          ./bin/test-base.sh
+          ./bin/test-native.sh
+          ./bin/test-polyglot.sh
+        env:
+          JDK_VERSION: ${{ matrix.jdk_version }}
+          DEFAULT_IMAGE: ${{ matrix.default_image }}
+      - name: Deploy
+        if: ${{ github.event_name == 'push' && github.event.ref == 'refs/heads/master' }}
+        run: |
+          set -veuo pipefail
+          if [ "${DOCKER_PASSWORD}" != "" ]; then
+            . ./settings.sh
+            ./bin/deploy.sh
+          fi
+        env:
+          JDK_VERSION: ${{ matrix.jdk_version }}
+          DEFAULT_IMAGE: ${{ matrix.default_image }}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}

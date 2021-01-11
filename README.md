@@ -1,6 +1,6 @@
 # GraalVM docker container
 
-[![Build Status](https://travis-ci.org/findepi/graalvm-docker.svg?branch=master)](https://travis-ci.org/findepi/graalvm-docker)
+![ci](https://github.com/findepi/graalvm-docker/workflows/ci/badge.svg)
 [![Docker Automated build](https://img.shields.io/docker/automated/findepi/graalvm.svg)](https://hub.docker.com/r/findepi/graalvm/)
 
 ## What’s inside

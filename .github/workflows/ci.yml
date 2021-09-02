@@ -10,10 +10,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        jdk_version: [ java8 ]
+        jdk_version: [ java11 ]
         default_image: [ true ]
         include:
-          - jdk_version: java11
+          - jdk_version: java16
             default_image: false
     timeout-minutes: 45
     steps:

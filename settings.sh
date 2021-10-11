@@ -2,5 +2,5 @@
 
 export IMAGE_NAME=findepi/graalvm # by necessity, this is also set in derived images' FROM directive
 export GRAAL_VERSION="21.2.0"
-export JDK_VERSION="${JDK_VERSION-java8}"
+export JDK_VERSION="${JDK_VERSION-java11}"
 export DEFAULT="${DEFAULT-false}"

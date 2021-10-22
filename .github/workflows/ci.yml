@@ -13,7 +13,7 @@ jobs:
         jdk_version: [ java11 ]
         default_image: [ true ]
         include:
-          - jdk_version: java16
+          - jdk_version: java17
             default_image: false
     timeout-minutes: 45
     steps:

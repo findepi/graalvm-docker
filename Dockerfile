@@ -24,11 +24,10 @@ RUN set -xeu && \
         && \
     apt-get autoremove -y && \
     apt-get clean && rm -r "/var/lib/apt/lists"/* && \
+    # PATH is set via ENV below. However, `bash -l` will source `/etc/profile` and set $PATH on its own.
     echo 'PATH="/graalvm/bin:$PATH"' | install --mode 0644 /dev/stdin /etc/profile.d/graal-on-path.sh && \
     echo OK
 
-# This applies to all container processes. However, `bash -l` will source `/etc/profile` and set $PATH on its own. For this reason, we
-# *also* set $PATH in /etc/profile.d/*
-ENV PATH=/graalvm/bin:$PATH
+ENV PATH=/graalvm/bin:$PATH JAVA_HOME=/graalvm
 
 # vim:set tw=140:

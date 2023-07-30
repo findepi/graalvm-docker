@@ -14,7 +14,7 @@ public class Hello {
 }
 CODE
 javac Hello.java
-native-image --no-server Hello
+native-image Hello
 rm Hello.*
 set +x -v
 test "$(./hello 37)" = "456487940826035155404146917" # 37^17

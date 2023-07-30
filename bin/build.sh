@@ -9,8 +9,8 @@ docker pull "${IMAGE_NAME}:${GRAAL_VERSION}-${JDK_VERSION}-polyglot" || true
 docker build \
     --pull `#base is public, make sure to use the latest greatest` \
     --file Dockerfile \
-    --build-arg "GRAAL_VERSION=${GRAAL_VERSION}" \
     --build-arg "JDK_VERSION=${JDK_VERSION}" \
+    --build-arg "GRAAL_JDK_VERSION=${GRAAL_JDK_VERSION}" \
     --cache-from "${IMAGE_NAME}:${GRAAL_VERSION}-${JDK_VERSION}" \
     --tag "${IMAGE_NAME}:${GRAAL_VERSION}-${JDK_VERSION}" \
     .

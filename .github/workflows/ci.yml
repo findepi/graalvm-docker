@@ -26,6 +26,13 @@ jobs:
           . ./settings.sh
           ./bin/build.sh
           docker image ls
+        env:
+          JDK_VERSION: ${{ matrix.jdk_version }}
+          DEFAULT_IMAGE: ${{ matrix.default_image }}
+      - name: Test
+        run: |
+          set -xeuo pipefail
+          . ./settings.sh
           ./bin/test-base.sh
           ./bin/test-native.sh
           ./bin/test-polyglot.sh

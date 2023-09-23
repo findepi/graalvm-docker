@@ -8,12 +8,18 @@ set +v -x
 
 docker push "${IMAGE_NAME}:${JDK_VERSION}"
 docker push "${IMAGE_NAME}:${JDK_VERSION}-native"
-docker push "${IMAGE_NAME}:${JDK_VERSION}-polyglot"
-docker push "${IMAGE_NAME}:${JDK_VERSION}-all"
+if "${BUILD_POLYGLOT}"; then
+    docker push "${IMAGE_NAME}:${JDK_VERSION}-polyglot"
+    # When there is no polyglot image, the "all" image does not make much sense.
+    docker push "${IMAGE_NAME}:${JDK_VERSION}-all"
+fi
 
 if [ "${DEFAULT_IMAGE}" = "true" ]; then
     docker push "${IMAGE_NAME}:latest"
     docker push "${IMAGE_NAME}:native"
-    docker push "${IMAGE_NAME}:polyglot"
-    docker push "${IMAGE_NAME}:all"
+    if "${BUILD_POLYGLOT}"; then
+        docker push "${IMAGE_NAME}:polyglot"
+        # When there is no polyglot image, the "all" image does not make much sense.
+        docker push "${IMAGE_NAME}:all"
+    fi
 fi

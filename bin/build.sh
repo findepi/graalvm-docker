@@ -4,7 +4,9 @@ set -xeuo pipefail
 
 docker pull "${IMAGE_NAME}:${JDK_VERSION}" || true
 docker pull "${IMAGE_NAME}:${JDK_VERSION}-native" || true
-docker pull "${IMAGE_NAME}:${JDK_VERSION}-polyglot" || true
+if "${BUILD_POLYGLOT}"; then
+    docker pull "${IMAGE_NAME}:${JDK_VERSION}-polyglot" || true
+fi
 
 docker build \
     --pull `#base is public, make sure to use the latest greatest` \
@@ -22,21 +24,33 @@ docker build \
     --tag "${IMAGE_NAME}:${JDK_VERSION}-native" \
     .
 
-docker build \
-    --file Dockerfile.polyglot \
-    --build-arg "JDK_VERSION=${JDK_VERSION}" \
-    --cache-from "${IMAGE_NAME}:${JDK_VERSION}-polyglot" \
-    --tag "${IMAGE_NAME}:${JDK_VERSION}-polyglot" \
-    .
+# Polyglot image depends on `gu` which is removed from Java21. While it's possible
+# to provide equivalent functionality (e.g. `pyenv install graalpy-community-23.1.0`
+# for Python), it not necessarily makes sense (bigger image). For now, don't build
+# polyglot.
+if "${BUILD_POLYGLOT}"; then
+    docker build \
+        --file Dockerfile.polyglot \
+        --build-arg "JDK_VERSION=${JDK_VERSION}" \
+        --cache-from "${IMAGE_NAME}:${JDK_VERSION}-polyglot" \
+        --tag "${IMAGE_NAME}:${JDK_VERSION}-polyglot" \
+        .
+fi
 
 docker tag "${IMAGE_NAME}:${JDK_VERSION}" "${IMAGE_NAME}:${JDK_VERSION}"
 docker tag "${IMAGE_NAME}:${JDK_VERSION}-native" "${IMAGE_NAME}:${JDK_VERSION}-native"
-docker tag "${IMAGE_NAME}:${JDK_VERSION}-polyglot" "${IMAGE_NAME}:${JDK_VERSION}-polyglot"
-docker tag "${IMAGE_NAME}:${JDK_VERSION}-polyglot" "${IMAGE_NAME}:${JDK_VERSION}-all"
+if "${BUILD_POLYGLOT}"; then
+    docker tag "${IMAGE_NAME}:${JDK_VERSION}-polyglot" "${IMAGE_NAME}:${JDK_VERSION}-polyglot"
+    # When there is no polyglot image, the "all" image does not make much sense.
+    docker tag "${IMAGE_NAME}:${JDK_VERSION}-polyglot" "${IMAGE_NAME}:${JDK_VERSION}-all"
+fi
 
 if [ "${DEFAULT_IMAGE}" = "true" ]; then
     docker tag "${IMAGE_NAME}:${JDK_VERSION}" "${IMAGE_NAME}:latest"
     docker tag "${IMAGE_NAME}:${JDK_VERSION}-native" "${IMAGE_NAME}:native"
-    docker tag "${IMAGE_NAME}:${JDK_VERSION}-polyglot" "${IMAGE_NAME}:polyglot"
-    docker tag "${IMAGE_NAME}:${JDK_VERSION}-all" "${IMAGE_NAME}:all"
+    if "${BUILD_POLYGLOT}"; then
+        docker tag "${IMAGE_NAME}:${JDK_VERSION}-polyglot" "${IMAGE_NAME}:polyglot"
+        # When there is no polyglot image, the "all" image does not make much sense.
+        docker tag "${IMAGE_NAME}:${JDK_VERSION}-all" "${IMAGE_NAME}:all"
+    fi
 fi

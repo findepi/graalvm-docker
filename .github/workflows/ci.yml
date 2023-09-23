@@ -15,6 +15,8 @@ jobs:
             default_image: true
           - jdk_version: java20
             default_image: false
+          - jdk_version: java21
+            default_image: false
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v2
@@ -33,7 +35,9 @@ jobs:
           . ./settings.sh
           ./bin/test-base.sh
           ./bin/test-native.sh
-          ./bin/test-polyglot.sh
+          if "${BUILD_POLYGLOT}"; then
+            ./bin/test-polyglot.sh
+          fi
         env:
           JDK_VERSION: ${{ matrix.jdk_version }}
           DEFAULT_IMAGE: ${{ matrix.default_image }}

@@ -37,7 +37,7 @@ docker tag "${IMAGE_NAME}:${GRAAL_VERSION}-${JDK_VERSION}-polyglot" "${IMAGE_NAM
 docker tag "${IMAGE_NAME}:${GRAAL_VERSION}-${JDK_VERSION}-polyglot" "${IMAGE_NAME}:${JDK_VERSION}-polyglot"
 docker tag "${IMAGE_NAME}:${GRAAL_VERSION}-${JDK_VERSION}-polyglot" "${IMAGE_NAME}:${JDK_VERSION}-all"
 
-if [ "${DEFAULT}" = "true" ]; then
+if [ "${DEFAULT_IMAGE}" = "true" ]; then
     docker tag "${IMAGE_NAME}:${GRAAL_VERSION}-${JDK_VERSION}" "${IMAGE_NAME}:latest"
     docker tag "${IMAGE_NAME}:${GRAAL_VERSION}-${JDK_VERSION}-native" "${IMAGE_NAME}:native"
     docker tag "${IMAGE_NAME}:${GRAAL_VERSION}-${JDK_VERSION}-polyglot" "${IMAGE_NAME}:polyglot"

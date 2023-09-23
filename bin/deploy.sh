@@ -16,7 +16,7 @@ docker push "${IMAGE_NAME}:${JDK_VERSION}-native"
 docker push "${IMAGE_NAME}:${JDK_VERSION}-polyglot"
 docker push "${IMAGE_NAME}:${JDK_VERSION}-all"
 
-if [ "${DEFAULT}" = "true" ]; then
+if [ "${DEFAULT_IMAGE}" = "true" ]; then
     docker push "${IMAGE_NAME}:latest"
     docker push "${IMAGE_NAME}:native"
     docker push "${IMAGE_NAME}:polyglot"

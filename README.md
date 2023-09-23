@@ -15,26 +15,28 @@ derived image based on this.
 
 ```
 $ docker run --rm findepi/graalvm java -version
-openjdk version "1.8.0_222"
-OpenJDK Runtime Environment (build 1.8.0_222-20190711120915.buildslave.jdk8u-src-tar--b08)
-OpenJDK 64-Bit GraalVM CE 19.x.x (build 25.222-b08-jvmci-19.2-b02, mixed mode)
+openjdk version "17.0.8" 2023-07-18
+OpenJDK Runtime Environment GraalVM CE 17.0.8+7.1 (build 17.0.8+7-jvmci-23.0-b15)
+OpenJDK 64-Bit Server VM GraalVM CE 17.0.8+7.1 (build 17.0.8+7-jvmci-23.0-b15, mixed mode, sharing)
 ```
 
 … and for the polyglot image:
 
 ```
-$ docker run -i --rm findepi/graalvm:polyglot graalpython /dev/stdin <<<"print([42, 2**42])"
-Please note: This Python implementation is in the very early stages, and can run little more than basic benchmarks at this point.
+$ docker run -i --rm findepi/graalvm:polyglot python --version
+GraalPy 3.10.8 (GraalVM CE Native 23.0.1)
+
+$ docker run -i --rm findepi/graalvm:polyglot python -c 'print([42, 2**42])'
 [42, 4398046511104]
 ```
 
-… and for the Java 11 (here: non-polyglot) image:
+… and for the Java 20 (here: non-polyglot) image:
 
 ```
-$ docker run --rm findepi/graalvm:java11 java -version
-openjdk version "11.0.5" 2019-10-15
-OpenJDK Runtime Environment (build 11.0.5+10-jvmci-19.3-b05-LTS)
-OpenJDK 64-Bit GraalVM CE 19.x.x (build 11.0.5+10-jvmci-19.3-b05-LTS, mixed mode, sharing)
+$ docker run --rm findepi/graalvm:java20 java -version
+openjdk version "20.0.2" 2023-07-18
+OpenJDK Runtime Environment GraalVM CE 20.0.2+9.1 (build 20.0.2+9-jvmci-23.0-b15)
+OpenJDK 64-Bit Server VM GraalVM CE 20.0.2+9.1 (build 20.0.2+9-jvmci-23.0-b15, mixed mode, sharing)
 ```
 
 See all available images at https://hub.docker.com/r/findepi/graalvm/tags.

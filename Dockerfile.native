@@ -11,7 +11,6 @@ RUN set -xeu && \
         g++ \
         libz-dev \
         && \
-    gu install native-image && \
     # Cleanup
     apt-get clean && rm -rf "/var/lib/apt/lists/*" && \
     echo OK

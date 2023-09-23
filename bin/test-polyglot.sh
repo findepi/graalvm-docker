@@ -2,11 +2,11 @@
 
 set -xeuo pipefail
 
-image="${IMAGE_NAME}:${GRAAL_VERSION}-${JDK_VERSION}-polyglot"
+image="${IMAGE_NAME}:${JDK_VERSION}-polyglot"
 graalvm_python="python"
 
 # Verify graalvm_python is indeed GraalVM Python
-docker run -i --rm  "${image}" "${graalvm_python}" --version | tee /dev/stderr | grep "GraalPy [0-9.]\\+ (GraalVM CE Native ${GRAAL_VERSION})"
+docker run -i --rm  "${image}" "${graalvm_python}" --version | tee /dev/stderr | grep "GraalPy [0-9.]\\+ (GraalVM CE Native"
 
 echo "print(2**42)" > /tmp/test-script.py
 docker run -i --rm -v /tmp/test-script.py:/tmp/test-script.py "${image}" ${graalvm_python} /tmp/test-script.py \

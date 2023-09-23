@@ -6,11 +6,6 @@ set +x -v
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 set +v -x
 
-docker push "${IMAGE_NAME}:${GRAAL_VERSION}-${JDK_VERSION}"
-docker push "${IMAGE_NAME}:${GRAAL_VERSION}-${JDK_VERSION}-native"
-docker push "${IMAGE_NAME}:${GRAAL_VERSION}-${JDK_VERSION}-polyglot"
-docker push "${IMAGE_NAME}:${GRAAL_VERSION}-${JDK_VERSION}-all"
-
 docker push "${IMAGE_NAME}:${JDK_VERSION}"
 docker push "${IMAGE_NAME}:${JDK_VERSION}-native"
 docker push "${IMAGE_NAME}:${JDK_VERSION}-polyglot"

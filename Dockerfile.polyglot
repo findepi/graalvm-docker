@@ -1,6 +1,5 @@
-ARG GRAAL_VERSION
 ARG JDK_VERSION
-FROM findepi/graalvm:${GRAAL_VERSION}-${JDK_VERSION}-native
+FROM findepi/graalvm:${JDK_VERSION}-native
 LABEL maintainer="Piotr Findeisen <piotr.findeisen@gmail.com>"
 
 RUN set -xeu && \

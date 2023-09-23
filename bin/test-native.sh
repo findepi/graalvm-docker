@@ -2,7 +2,7 @@
 
 set -xeuo pipefail
 
-docker run -i --name graalvm-native --volume sandbox:/sandbox "${IMAGE_NAME}:${GRAAL_VERSION}-${JDK_VERSION}-native" bash <<"DOCKER_CMD"
+docker run -i --name graalvm-native --volume sandbox:/sandbox "${IMAGE_NAME}:${JDK_VERSION}-native" bash <<"DOCKER_CMD"
 PS4="+++ "
 set -xeuo pipefail
 cd /sandbox

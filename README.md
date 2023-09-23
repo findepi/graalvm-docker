@@ -30,13 +30,13 @@ $ docker run -i --rm findepi/graalvm:polyglot python -c 'print([42, 2**42])'
 [42, 4398046511104]
 ```
 
-… and for the Java 20 (here: non-polyglot) image:
+… and for the Java 21 image:
 
 ```
-$ docker run --rm findepi/graalvm:java20 java -version
-openjdk version "20.0.2" 2023-07-18
-OpenJDK Runtime Environment GraalVM CE 20.0.2+9.1 (build 20.0.2+9-jvmci-23.0-b15)
-OpenJDK 64-Bit Server VM GraalVM CE 20.0.2+9.1 (build 20.0.2+9-jvmci-23.0-b15, mixed mode, sharing)
+$ docker run --rm findepi/graalvm:java21 java -version
+openjdk version "21" 2023-09-19
+OpenJDK Runtime Environment GraalVM CE 21+35.1 (build 21+35-jvmci-23.1-b15)
+OpenJDK 64-Bit Server VM GraalVM CE 21+35.1 (build 21+35-jvmci-23.1-b15, mixed mode, sharing)
 ```
 
 See all available images at https://hub.docker.com/r/findepi/graalvm/tags.

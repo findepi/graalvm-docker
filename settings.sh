@@ -5,7 +5,7 @@ export JDK_VERSION="${JDK_VERSION-java17}"
 export DEFAULT_IMAGE="${DEFAULT_IMAGE-false}"
 
 if [ "${JDK_VERSION}" = "java17" ]; then
-    GRAAL_JDK_VERSION="17.0.8"
+    GRAAL_JDK_VERSION="17.0.9"
     BUILD_POLYGLOT=true
 elif [ "${JDK_VERSION}" = "java20" ]; then
     GRAAL_JDK_VERSION="20.0.2"

@@ -17,6 +17,8 @@ jobs:
             default_image: false
           - jdk_version: java21
             default_image: false
+          - jdk_version: java22
+            default_image: false
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v2

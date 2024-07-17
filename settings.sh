@@ -13,6 +13,9 @@ elif [ "${JDK_VERSION}" = "java20" ]; then
 elif [ "${JDK_VERSION}" = "java21" ]; then
     GRAAL_JDK_VERSION="21.0.2"
     BUILD_POLYGLOT=false
+elif [ "${JDK_VERSION}" = "java22" ]; then
+    GRAAL_JDK_VERSION="22.0.2"
+    BUILD_POLYGLOT=false
 else
     echo "Unknown JDK_VERSION ${JDK_VERSION}" >&2
     exit 1
